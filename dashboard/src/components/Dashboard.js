@@ -16,7 +16,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       {/* <GeneralContextProvider> */}
-        {/* <WatchList /> */}
+        <WatchList />
       {/* </GeneralContextProvider> */}
       <div className="content">
         <Routes>
