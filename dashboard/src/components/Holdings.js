@@ -6,13 +6,54 @@ import axios from "axios";
 const Holdings = () => {
    const [allHoldings,setallHoldings]=useState([]);
    useEffect(()=>{
-      axios.get("http://localhost:3002/addHoldings").then((res)=>{
-         setallHoldings(res.data);
+
+    Promise.all([
+       axios.get("http://localhost:3002/addHoldings"),
+
+       axios.get("http://localhost:3002/addOrder")
+    ])
+      
+      .then(([holdingsRes,ordersRes])=>{
+      
+         const holdingsData=[...(holdingsRes.data || [])];
+         const ordersData=ordersRes.data || [];
+         ordersData
+            .filter(order=>order.mode==="BUY")
+            .forEach(order=>{
+              holdingsData.push({
+             name: order.name,
+            qty: order.qty||0,
+           avg: order.price||0, // For an individual order, price acts as the average cost
+           price:order.price ||0,
+           net: order.net || "+0.00%",
+           day: order.day || "+0.00%",
+           isLoss: false
+           });
       });
-   },[]);
 
+      ordersData.
+      filter(order=>order.mode==="SELL")
+      .forEach(order=>{
+        let remainingQty=order.qty;
+        for(let holding of holdingsData){
+          if(holding.name!==order.name){
+            continue;
+          }else if(holding.qty>=remainingQty){
+            holding.qty-=remainingQty;
+            break;
+          }else{
+             remainingQty-=holding.qty;
+             holding.qty=0;
+          }
+        }
+      });
+         setallHoldings(holdingsData.filter(stock=>stock.qty>0));   
+      });
+      
+   });
 
-
+   // Format the orders data so it matches the structural the keys the table expects
+  
   return (
     <>
       <h3 className="title">Holdings ({allHoldings.length})</h3>
