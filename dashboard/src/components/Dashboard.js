@@ -6,7 +6,7 @@ import {GeneralContextProvider as GeneralContextSellProvider} from "./GeneralCon
 import Apps from "./Apps";
 import Funds from "./Funds";
 import Holdings from "./Holdings";
-
+import { HoldingsProvider} from './HoldingsContext';
 import Orders from "./Orders";
 import Positions from "./Positions";
 import Summary from "./Summary";
@@ -15,13 +15,15 @@ import WatchList from "./WatchList";
 
 const Dashboard = () => {
   return (
-   
+   <HoldingsProvider>
     <div className="dashboard-container">
+    
      <GeneralContextSellProvider>
       <GeneralContextProvider>
         <WatchList />
       </GeneralContextProvider>
     </GeneralContextSellProvider>
+   
       <div className="content">
         <Routes>
           <Route exact path="/" element={<Summary />} />
@@ -33,6 +35,7 @@ const Dashboard = () => {
         </Routes>
       </div>
     </div>
+     </HoldingsProvider>
   );
 };
 

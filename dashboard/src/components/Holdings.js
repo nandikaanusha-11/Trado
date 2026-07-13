@@ -1,67 +1,23 @@
 import React , {useState,useEffect} from "react";
-// import {holdings} from "../data/data.js";
+
 import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
-
+import { useContext } from "react";
+import HoldingsContext from "./HoldingsContext";
 
 const Holdings = () => {
-   const [allHoldings,setallHoldings]=useState([]);
-   useEffect(()=>{
-
-    Promise.all([
-       axios.get("http://localhost:3002/addHoldings"),
-
-       axios.get("http://localhost:3002/addOrder")
-    ])
-      
-      .then(([holdingsRes,ordersRes])=>{
-      
-         const holdingsData=[...(holdingsRes.data || [])];
-         const ordersData=ordersRes.data || [];
-         ordersData
-            .filter(order=>order.mode==="BUY")
-            .forEach(order=>{
-              holdingsData.push({
-             name: order.name,
-            qty: order.qty||0,
-           avg: order.price||0, // For an individual order, price acts as the average cost
-           price:order.price ||0,
-           net: order.net || "+0.00%",
-           day: order.day || "+0.00%",
-           isLoss: false
-           });
-      });
-
-      ordersData.
-      filter(order=>order.mode==="SELL")
-      .forEach(order=>{
-        let remainingQty=order.qty;
-        for(let holding of holdingsData){
-          if(holding.name!==order.name){
-            continue;
-          }else if(holding.qty>=remainingQty){
-            holding.qty-=remainingQty;
-            break;
-          }else{
-             remainingQty-=holding.qty;
-             holding.qty=0;
-          }
-        }
-      });
-         setallHoldings(holdingsData.filter(stock=>stock.qty>0));   
-      });
-      
-   });
-
+ 
+  const { holdings } = useContext(HoldingsContext);
+  
    //creating a subarray labels from the existing list of holdings array
- const labels=allHoldings.map((subArray)=>subArray["name"]);
+ const labels=holdings.map((subArray)=>subArray["name"]);
 
  const data={
   labels,
   datasets:[
    {
     label:"Stock Price",
-    data:allHoldings.map((stock)=>stock.price),
+    data:holdings.map((stock)=>stock.price),
     backgroundColor:"rgba(255,99,132,0.5)",
    }
   ],
@@ -70,7 +26,7 @@ const Holdings = () => {
   
   return (
     <>
-      <h3 className="title">Holdings ({allHoldings.length})</h3>
+      <h3 className="title">Holdings ({holdings.length})</h3>
 
       <div className="order-table">
         <table>
@@ -85,7 +41,7 @@ const Holdings = () => {
             <th>Day chg.</th>
           </tr>
 
-         {allHoldings.map((stock,index)=>{
+         {holdings.map((stock,index)=>{
            const curValue=stock.price*stock.qty;
            const isProfit=curValue-stock.avg*stock.qty >=0.0;
            const profClass=isProfit?"profit":"loss";
