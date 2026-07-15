@@ -8,7 +8,7 @@ export const HoldingsProvider = ({ children }) => {
 
   const fetchHoldings = async () => {
     try {
-      const res = await axios.get("http://localhost:3002/addHoldings");
+      const res = await axios.get("https://trado-1-j98g.onrender.com/addHoldings");
       setHoldings(res.data.filter(stock => stock.qty > 0));
     } catch (err) {
       console.error(err);

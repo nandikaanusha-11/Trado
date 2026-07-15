@@ -6,7 +6,7 @@ import axios from "axios";
 const Positions = () => {
    const [allPositions,setallPositions]=useState([]);
    useEffect(()=>{
-      axios.get("http://localhost:3002/addPositions").then((res)=>{
+      axios.get("https://trado-1-j98g.onrender.com/addPositions").then((res)=>{
          setallPositions(res.data);
       });
    },[]);

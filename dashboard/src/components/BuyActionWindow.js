@@ -19,7 +19,7 @@ const { closeBuyWindow } = useContext(GeneralContext);
 const { fetchHoldings } = useContext(HoldingsContext);
 
 const handleBuyClick = async () => {
-  await axios.post("http://localhost:3002/newOrder", {
+  await axios.post("https://trado-1-j98g.onrender.com/newOrder", {
     name: uid,
     qty: Number(stockQuantity),
     price: Number(stockPrice),

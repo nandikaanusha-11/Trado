@@ -6,7 +6,7 @@ import axios from "axios";
 const Orders = () => {
    const [allOrders,setallOrders]=useState([]);
    useEffect(()=>{
-      axios.get("http://localhost:3002/addOrder").then((res)=>{
+      axios.get("https://trado-1-j98g.onrender.com/addOrder").then((res)=>{
          setallOrders(res.data);
       });
    },[]);
