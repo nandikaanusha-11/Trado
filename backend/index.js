@@ -22,7 +22,7 @@ const { MONGO_URL} = process.env;
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://trado-1-j98g.onrender.com",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
