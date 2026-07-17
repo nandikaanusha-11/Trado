@@ -144,6 +144,9 @@ app.get("/addOrder",async (req,res)=>{
 app.use(express.json());
 
 app.use(cookieParser());
+app.post("/check", (req, res) => {
+  res.json({ message: "Backend is working" });
+});
 app.use("/", authRoute);
 app.listen(PORT,()=>{
     console.log("app is listening on port 3002");
