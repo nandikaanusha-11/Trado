@@ -31,7 +31,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/login",
+        "https://trado-1-j98g.onrender.com/login",
         {
           ...inputValue,
         },
@@ -42,7 +42,7 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/dashboard");
+          window.location.href = "https://trado-3.onrender.com";
         }, 1000);
       } else {
         handleError(message);
