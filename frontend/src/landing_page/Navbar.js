@@ -28,9 +28,7 @@ function Navbar() {
         <li class="nav-item">
           <Link class="nav-link active" aria-current="page" to="support">Support</Link>
         </li>
-        <li class="nav-item mt-2">
-            <i class="fa-solid fa-bars"></i>
-        </li>
+       
       </ul>
       
     </div>
