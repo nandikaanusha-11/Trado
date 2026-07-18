@@ -33,7 +33,8 @@ const Login = () => {
       const { data } = await axios.post(
         "https://trado-1-j98g.onrender.com/login",
         {
-          ...inputValue,
+          email,
+          password,
         },
         { withCredentials: true }
       );
