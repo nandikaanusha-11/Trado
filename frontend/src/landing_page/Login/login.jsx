@@ -44,7 +44,7 @@ const Login = () => {
         handleSuccess(message);
         setTimeout(() => {
           window.location.href = "https://trado-3.onrender.com";
-        }, 1000);
+        }, 100);
       } else {
         handleError(message);
       }
