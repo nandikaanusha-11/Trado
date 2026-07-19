@@ -5,7 +5,7 @@ function OpenAccount() {
        <div className="container text-center mt-5 pt-5 mb-5">
         <h3>Open a Zerodha account</h3>
         <p>Modern platforms and apps,&#8377;0 investments, and flat &#8377;20 intraday and F&O trades. </p>
-        import { Link } from "react-router-dom";
+        
 
 <Link to="/signup">
   <button
