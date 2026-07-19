@@ -53,7 +53,7 @@ function Universe() {
                 
             </div>
 
-            <div  style={{alignItems:"center",marginLeft:"40rem",marginTop:"2em"}}  >
+            <div  style={{alignItems:"center",marginTop:"2em"}}  >
                
 
 <Link to="/signup">
