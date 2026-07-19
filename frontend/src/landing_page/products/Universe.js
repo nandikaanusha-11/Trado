@@ -53,13 +53,13 @@ function Universe() {
                 
             </div>
 
-            <div  style={{alignItems:"center",marginTop:"2em"}}  >
+            <div  style={{alignItems:"center",marginLeft:"40px",marginTop:"2em"}}  >
                
 
 <Link to="/signup">
   <button
     className="p-2 btn btn-primary fs-5 mb-5"
-    style={{ width: "20%", margin: "0 auto" }}
+    style={{ width: "40%", margin: "0 auto" }}
   >
     Sign up for free
   </button>
