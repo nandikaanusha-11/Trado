@@ -53,7 +53,17 @@ function Universe() {
             </div>
 
             <div  style={{alignItems:"center",marginLeft:"40rem",marginTop:"2em"}}  >
-                <button className="p-2 btn btn-primary fs-5 mb-5" style={{width:"20%",margin:"0 auto"}}>Sign up for free</button>
+                 import { Link } from "react-router-dom";
+
+<Link to="/signup">
+  <button
+    className="p-2 btn btn-primary fs-5 mb-5"
+    style={{ width: "20%", margin: "0 auto" }}
+  >
+    Sign up for free
+  </button>
+</Link>
+               
             </div> 
             
             
