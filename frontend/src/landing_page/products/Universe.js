@@ -9,7 +9,7 @@ function Universe() {
             </div>
             <div className="row mt-5 " style={{alignItems:"center",textAlign:"center",fontSize:"12px"}}>
                 <div className="col p-5" style={{textAlign:"center"}}>
-                    <img src="media/images/ZerodhaFundhouse.png" alt="icon1" style={{width:"30%"}} className="mb-2"/>
+                    <img src="media/images/zerodhaFundhouse.png" alt="icon1" style={{width:"30%"}} className="mb-2"/>
                     <p className="mb-2">Our asset management venture that is creating simple and 
                         transparent index funds to help you save for your goals.</p>
                 </div>
@@ -56,14 +56,13 @@ function Universe() {
             <div  style={{alignItems:"center",marginLeft:"40px",marginTop:"2em"}}  >
                
 
-<Link to="/signup">
-  <button
-    className="p-2 btn btn-primary fs-5 mb-5"
-    style={{ width: "40%", margin: "0 auto" }}
-  >
-    Sign up for free
-  </button>
-</Link>
+<div className="d-flex justify-content-center mt-5 mb-5">
+  <Link to="/signup" style={{ width: "250px" }}>
+    <button className="btn btn-primary fs-5 w-100 py-2">
+      Sign up for free
+    </button>
+  </Link>
+</div>
                
             </div> 
             
