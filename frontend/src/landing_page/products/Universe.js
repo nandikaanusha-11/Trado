@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 function Universe() {
     return ( 
-        <div className="conatiner mt-5 p-5 text-muted">
+        <div className="container mt-5 p-5 text-muted">
             <div style={{textAlign:"center"}}>
                 <h4 className="mb-3">The Zerodha Universe</h4>
                 <p >Extend your trading and investment experience even further with our partner platforms</p>
@@ -54,7 +54,7 @@ function Universe() {
             </div>
 
             <div  style={{alignItems:"center",marginLeft:"40rem",marginTop:"2em"}}  >
-                 import { Link } from "react-router-dom";
+               
 
 <Link to="/signup">
   <button
